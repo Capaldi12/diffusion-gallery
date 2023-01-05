@@ -1,11 +1,23 @@
+# python and pycharm
 .idea
 __pycache__
 
+# package data
 *.egg-info
+
+# model files
 *.ckpt
 
+# database
 *.sqlite3
 
+# source dependencies
 /src
+
+# program output
 /logs
 /outputs
+
+# web server media files
+/media
+/gallery_models
