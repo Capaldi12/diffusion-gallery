@@ -59,12 +59,21 @@ class Prompt(models.Model):
 
     # Random number generator seed
     # TODO validate seed is empty string or can be cast to number
+    #   or hash the string if it can not instead
     seed = models.CharField(max_length=16)  # seed
 
     # Sampling algorithm
-    sampler = models.CharField(choices=[
-        'ddim', 'plms', 'heun', 'euler', 'euler_a', 'dpm2', 'dpm2_a', 'lms'
-    ], default='plms')    # sampler
+    sampler = models.CharField(max_length=16, choices=[
+        ('euler', 'Euler'),
+        ('heun', 'Heun'),
+        ('lms', 'LMS'),
+        ('plms', 'PLMS'),
+        ('ddim', 'DDIM'),
+        ('dpm2', 'DPM2'),
+        ('euler_a', 'Euler Ancestral'),
+        ('dpm2_a', 'DPM2 Ancestral'),
+
+    ], default='euler')    # sampler
 
     # Number of samples in operation (images generated simultaneously)
     #   Perhaps should be calculated based on picture size and VRAM available
