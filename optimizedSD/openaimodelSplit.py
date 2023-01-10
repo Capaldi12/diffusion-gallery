@@ -13,7 +13,12 @@ from ldm.modules.diffusionmodules.util import (
     normalization,
     timestep_embedding,
 )
-from splitAttention import SpatialTransformer
+
+
+try:
+    from .splitAttention import SpatialTransformer
+except ImportError:
+    from splitAttention import SpatialTransformer
 
 
 class AttentionPool2d(nn.Module):
