@@ -178,3 +178,4 @@ LOGGING = {
 # TODO set default value in app config somehow ?
 GALLERY_MODEL_ROOT = BASE_DIR / 'gallery_models'
 
+MODELS_CONFIG_PATH = BASE_DIR / 'optimizedSD' / 'v1-inference.yaml'
