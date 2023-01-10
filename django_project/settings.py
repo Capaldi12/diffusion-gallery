@@ -121,10 +121,60 @@ STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# TODO set default value in app config somehow ?
-GALLERY_MODEL_ROOT = BASE_DIR / 'gallery_models'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Logging configuration
+# https://docs.djangoproject.com/en/4.1/howto/logging/
+LOG_DIR = BASE_DIR / 'logs'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'simple': {
+            'format': '[{levelname}] {name}: {message}',
+            'style': '{'
+        },
+        'timed': {
+            'format': '{asctime} [{levelname}] {name}: {message}',
+            'style': '{'
+        }
+    },
+
+    'filters': {
+        'no_duplicates': {
+            '()': 'gallery.util.DuplicateFilter'
+        }
+    },
+
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'file_diffuse': {
+            'class': 'logging.FileHandler',
+            'filename': LOG_DIR / 'diffuse.log',
+            'formatter': 'timed',
+            'filters': ['no_duplicates']
+        }
+    },
+
+    'loggers': {
+        'diffuse': {
+            'handlers': ['console', 'file_diffuse'],
+            'level': 'DEBUG' if DEBUG else 'INFO'
+        }
+    }
+}
+
+
+# gallery specific configuration
+# TODO set default value in app config somehow ?
+GALLERY_MODEL_ROOT = BASE_DIR / 'gallery_models'
+
