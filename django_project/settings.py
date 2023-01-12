@@ -148,7 +148,7 @@ LOGGING = {
 
     'filters': {
         'no_duplicates': {
-            '()': 'gallery.util.DuplicateFilter'
+            '()': 'gallery.utils.DuplicateFilter'
         }
     },
 

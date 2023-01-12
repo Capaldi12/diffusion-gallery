@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .util import Router
+from .utils import Router
 
 
 route = Router()
