@@ -82,9 +82,10 @@ class Prompt(models.Model):
     # TODO validate seed is empty string or can be cast to number
     #   or hash the string if it can not instead
     seed = models.CharField(
-        max_length=16, help_text='Random number generator seed. '
-                                 'Numbers are used as is. Strings are hashed. '
-                                 'Leave blank for random seed')  # seed
+        max_length=16, blank=True,
+        help_text='Random number generator seed. '
+                  'Numbers are used as is. Strings are hashed. '
+                  'Leave blank for random seed')  # seed
 
     # Sampling algorithm
     sampler = models.CharField(max_length=16, choices=[

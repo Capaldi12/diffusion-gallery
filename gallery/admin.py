@@ -31,4 +31,5 @@ class TaskAdmin(admin.ModelAdmin):
     list_filter = [modelqueue.admin_list_filter('status')]
 
     def get_changeform_initial_data(self, request):
-        return {'status': modelqueue.Status.waiting()}
+        # TODO make custom widget https://stackoverflow.com/a/37676970
+        return {'status': int(modelqueue.Status.waiting())}
