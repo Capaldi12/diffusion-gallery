@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Diffusion Gallery{% endblock %}</title>
+
+    {% block global_styles %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'base.css' %}"/>
+    {% endblock %}
+
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1 class="noselect">Diffusion Gallery</h1>
+        <button class="noselect">Generate</button>
+    </header>
+    <div class="content-container">
+        {% block content %} Nothing here {% endblock %}
+    </div>
+</body>
+</html>
