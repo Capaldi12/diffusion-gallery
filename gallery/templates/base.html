@@ -1,3 +1,4 @@
+{# Base html template for whole website #}
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -16,8 +17,12 @@
 </head>
 <body>
     <header>
+        <!-- TODO link to main page on click -->
         <h1 class="noselect">Diffusion Gallery</h1>
-        <button class="noselect">Generate</button>
+        <!-- TODO display queue status -->
+        {% if not no_button %}
+            <button class="noselect" onclick="location.href='{% url 'generate' %}'">Generate</button>
+        {% endif %}
     </header>
     <div class="content-container">
         {% block content %} Nothing here {% endblock %}

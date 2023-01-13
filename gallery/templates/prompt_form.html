@@ -1,0 +1,17 @@
+{# Prompt creation form #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'prompt_form.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2 class="section-header centered noselect">Create Prompt</h2>
+<form method="Post">
+    {% csrf_token %}
+    <!-- TODO should make form by hand -->
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

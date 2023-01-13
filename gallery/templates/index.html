@@ -1,5 +1,5 @@
+{# Main gallery page #}
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block styles %}
@@ -25,7 +25,10 @@
         <div class="card" id="last-card">
             <h1 class="noselect">Want more?</h1>
             <div class="card-text">
-                <button class="single-button noselect">Generate</button>
+                <button class="single-button noselect"
+                        onclick="location.href='{% url 'generate' %}'">
+                    Generate
+                </button>
             </div>
         </div>
     </div>

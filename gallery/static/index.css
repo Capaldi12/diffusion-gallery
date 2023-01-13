@@ -1,12 +1,3 @@
-.section-header {
-    text-transform: uppercase;
-    margin: 50px auto 20px auto;
-}
-
-.centered {
-    text-align: center;
-}
-
 .image-grid {
     display: grid;
     grid-gap: 10px;
@@ -33,7 +24,7 @@
     width: 100%;
     height: 100%;
 
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(5px);
     opacity: 0;
 
@@ -80,6 +71,4 @@
 
 .single-button {
     font-size: 2.5em;
-    color: var(--primary);
-    background-color: var(--accent);
 }

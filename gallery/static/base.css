@@ -5,7 +5,7 @@
     --item-background: #1e1e1e;
     --primary: #e1e1e1;
     --on-primary: #121212;
-    --secondary: #e1e1e1;
+    --secondary: #919191;
     --accent: #2CB0E0;
 
 }
@@ -59,6 +59,7 @@ header {
     left: 0;
     right: 0;
     max-width: 100%;
+    min-height: 3rem;
 
     margin: 0;
     padding: 20px;
@@ -85,4 +86,13 @@ header > h1:hover {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+.section-header {
+    text-transform: uppercase;
+    margin: 50px auto 20px auto;
+}
+
+.centered {
+    text-align: center;
 }

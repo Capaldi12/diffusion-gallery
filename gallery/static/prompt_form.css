@@ -1,0 +1,17 @@
+form {
+    margin: auto;
+    width: fit-content;
+    min-width: 50vw;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+form > br {
+    display: none;
+}
+
+form > span {
+    margin-bottom: 1rem;
+    color: var(--secondary);
+}
