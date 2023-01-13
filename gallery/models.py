@@ -6,6 +6,7 @@ from django.core.validators import \
     MinValueValidator as Min, \
     MaxValueValidator as Max, \
     StepValueValidator as Step
+from django.shortcuts import reverse
 
 # https://grantjenks.com/docs/modelqueue/
 import modelqueue
@@ -149,6 +150,13 @@ class Prompt(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('prompt', args=[self.id])
+
+    def create_task(self, count=1):
+        for _ in range(count):
+            Task.objects.create(prompt=self)
 
 
 class Image(models.Model):

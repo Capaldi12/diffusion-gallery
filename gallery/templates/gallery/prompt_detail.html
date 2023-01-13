@@ -1,0 +1,32 @@
+{# Prompt details page #}
+{% extends 'gallery/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'prompt_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h2 class="section-header centered noselect">Prompt</h2>
+    <div class="card">
+        <p class="prompt-name">{{ prompt.name }}</p>
+        <p class="prompt-description">{{ prompt.text }}</p>
+        <div class="detail-row">
+            <!-- TODO icons for each detail -->
+            <p class="prompt-detail">{{ prompt.model.name }}</p>
+            <p class="prompt-detail">{{ prompt.width }}x{{ prompt.height }}</p>
+            <p class="prompt-detail">{{ prompt.steps }} steps</p>
+            <p class="prompt-detail">{{ prompt.seed|default:'Random seed' }}</p>
+        </div>
+        <form action="{% url 'task_create' %}" method="post" >
+            {% csrf_token %}
+            <label for="id_prompt" hidden>Prompt id</label><input type="text" name="prompt_id" id="id_prompt" value="{{ prompt.id }}" hidden>
+            <label for="id_count">
+                Generate
+                <input type="number" name="count" id="id_count" min="0" max="10" value="1">
+                image(s)
+            </label>
+            <input class="button" type="submit" value="Go!">
+        </form>
+    </div>
+{% endblock %}

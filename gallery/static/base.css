@@ -24,7 +24,7 @@ body {
     margin: 20px;
 }
 
-button {
+button, .button {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 0.5rem 1rem;
@@ -38,13 +38,13 @@ button {
     cursor: pointer;
 }
 
-button:hover,
-button:focus {
+button:hover, .button:hover,
+button:focus, .button:focus {
     filter: brightness(115%);
     box-shadow: rgba(255, 255, 255, 0.1) 0 4px 12px;
 }
 
-button:active {
+button:active, .button:active {
   filter: brightness(90%);
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(1px);
