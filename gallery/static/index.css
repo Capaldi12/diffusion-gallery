@@ -71,14 +71,14 @@
     color: var(--secondary);
 }
 
-.single-button {
-    padding: 3em 0;
+#last-card {
+    background-color: var(--item-background);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.single-button > button {
+.single-button {
     font-size: 2.5em;
     color: var(--primary);
     background-color: var(--accent);
