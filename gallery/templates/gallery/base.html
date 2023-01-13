@@ -18,7 +18,7 @@
 <body>
     <header>
         <!-- TODO link to main page on click -->
-        <h1 class="noselect">Diffusion Gallery</h1>
+        <h1 class="noselect"><a href="{% url 'index' %}">Diffusion Gallery</a></h1>
         <!-- TODO display queue status -->
         {% if not no_button %}
             <button class="noselect" onclick="location.href='{% url 'generate' %}'">Generate</button>

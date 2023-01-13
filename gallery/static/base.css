@@ -78,6 +78,11 @@ header > h1:hover {
     cursor: default;
 }
 
+header > h1 > a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
