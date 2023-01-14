@@ -1,12 +1,11 @@
 {# Main gallery page #}
 {% extends 'gallery/base.html' %}
-{% load static %}
 
 {% block content %}
     <h2 class="section-header centered noselect">We have images</h2>
     <div class="image-grid">
         {% for image in images %}
-            <div class="image-card">
+            <div class="card">
                 <img class="image noselect" src="{{ image.image.url }}" alt="{{ image.name}}"/>
                 <div class="card-text">
                     <p class="image-name">{{ image.name }}</p>
@@ -18,7 +17,7 @@
             </div>
         {% endfor %}
 
-        <div class="image-card" id="last-card">
+        <div class="card button-card">
             <h1 class="noselect">Want more?</h1>
             <div class="card-text">
                 <button class="single-button noselect"

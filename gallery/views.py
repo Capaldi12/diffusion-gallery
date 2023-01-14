@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse, redirect
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, ListView
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
 
@@ -13,14 +13,15 @@ route = Router()
 
 @route('', name='index')
 def index(request):
-    images = Image.objects.all().order_by('-created_at')
+    images = Image.objects.all()
 
-    return render(request, 'gallery/index.html', {'images': images})
+    return render(request, 'gallery/index.html',
+                  {'images': images, 'generate_button': True})
 
 
 @route('generate', name='generate')
 def generate(request):
-    return redirect(reverse('prompt_create'))
+    return redirect(reverse('prompt_list'))
 
 
 @route('prompt/create', name='prompt_create')
@@ -28,19 +29,17 @@ class PromptCreateView(CreateView):
     model = Prompt
     fields = ['name', 'text', 'model', 'width', 'height', 'steps', 'seed']
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        # Don't display `generate` button
-        context['no_button'] = True
-
-        return context
-
 
 @route('prompt/<pk>', name='prompt')
 class PromptDetailView(DetailView):
     model = Prompt
     context_object_name = 'prompt'
+
+
+@route('prompt', name='prompt_list')
+class PromptListView(ListView):
+    model = Prompt
+    context_object_name = 'prompts'
 
 
 @route('task/create', name='task_create')
@@ -54,5 +53,3 @@ def create_task(request):
 
     messages.info(request, 'Success!')
     return redirect(request.META['HTTP_REFERER'])
-
-

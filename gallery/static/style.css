@@ -7,8 +7,8 @@
     --primary: #e1e1e1;
     --on-primary: #121212;
     --secondary: #919191;
-    --accent: #2CB0E0;
-
+    --accent: #f78104;
+    --link: var(--accent);
 }
 
 /* Global styling */
@@ -20,6 +20,34 @@ body {
     color: var(--primary);
 
     font-family: 'Sofia Sans', sans-serif;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:not(.nolink) {
+    display: inline-block;
+    position: relative;
+}
+
+a:not(.nolink)::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 0.1em;
+    bottom: -0.1em;
+    left: 0;
+    background-color: var(--link);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+a:not(.nolink):hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 button, .button {
@@ -108,24 +136,18 @@ header > h1 > a {
     text-align: center;
 }
 
-/* index.html */
-
-.image-grid {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
-
-.image-card {
+.card {
     position: relative;
-    width: 100%;
     border-radius: 12px;
     overflow: hidden;
 }
 
-.image {
-    display: block;
-    width: 100%;
+.button-card {
+    position: relative;
+    background-color: var(--item-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-text {
@@ -161,9 +183,23 @@ header > h1 > a {
     transform: translateY(0);
 }
 
+/* index.html */
+
+.image-grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.image {
+    display: block;
+    width: 100%;
+}
+
 .image-name {
     font-size: 1.5em;
     font-weight: bold;
+    text-align: center;
 }
 
 .image-description {
@@ -172,13 +208,6 @@ header > h1 > a {
 
 .image-date {
     color: var(--secondary);
-}
-
-#last-card {
-    background-color: var(--item-background);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .single-button {
@@ -206,17 +235,22 @@ header > h1 > a {
     color: var(--secondary);
 }
 
-/* prompt_detail.css */
+/* prompt_card.css */
 
-.prompt-card {
+.card.prompt {
     background: var(--item-background);
-
-    max-width: 40vw;
-    margin: auto;
     padding: 20px;
 
-    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+.card.prompt.single {
+    max-width: 40vw;
+    margin: auto;
+}
+
 .prompt-name {
     margin: 0;
 
@@ -225,6 +259,7 @@ header > h1 > a {
 
     text-align: center;
 }
+
 .prompt-description {
     font-size: 1.5em;
 
@@ -255,4 +290,12 @@ header > h1 > a {
 
 #prompt-task-form input:not([type="submit"]) {
     font-size: 1em;
+}
+
+/* prompt_list.html */
+
+.prompt-list {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }

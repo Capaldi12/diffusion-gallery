@@ -1,0 +1,21 @@
+{# Prompt list view #}
+{% extends 'gallery/base.html' %}
+
+{% block content %}
+    <h2 class="section-header centered noselect">Choose Prompt</h2>
+    <div class="prompt-list">
+        <div class="card button-card" id="last-card">
+            <h1 class="noselect">Want something different?</h1>
+            <div class="card-text">
+                <button class="button" onclick="location.href='{% url 'prompt_create' %}'">
+                    Create new prompt
+                </button>
+            </div>
+        </div>
+        {% with name_is_link=True %}
+            {% for prompt in prompts %}
+                {% include 'gallery/prompt_card.html' %}
+            {% endfor %}
+        {% endwith %}
+    </div>
+{% endblock %}
