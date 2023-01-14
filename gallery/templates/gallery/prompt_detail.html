@@ -2,23 +2,19 @@
 {% extends 'gallery/base.html' %}
 {% load static %}
 
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'prompt_detail.css' %}">
-{% endblock %}
-
 {% block content %}
     <h2 class="section-header centered noselect">Prompt</h2>
-    <div class="card">
+    <div class="prompt-card">
         <p class="prompt-name">{{ prompt.name }}</p>
         <p class="prompt-description">{{ prompt.text }}</p>
         <div class="detail-row">
             <!-- TODO icons for each detail -->
             <p class="prompt-detail">{{ prompt.model.name }}</p>
-            <p class="prompt-detail">{{ prompt.width }}x{{ prompt.height }}</p>
+            <p class="prompt-detail">{{ prompt.size }}</p>
             <p class="prompt-detail">{{ prompt.steps }} steps</p>
             <p class="prompt-detail">{{ prompt.seed|default:'Random seed' }}</p>
         </div>
-        <form action="{% url 'task_create' %}" method="post" >
+        <form id="prompt-task-form" action="{% url 'task_create' %}" method="post" >
             {% csrf_token %}
             <label for="id_prompt" hidden>Prompt id</label><input type="text" name="prompt_id" id="id_prompt" value="{{ prompt.id }}" hidden>
             <label for="id_count">

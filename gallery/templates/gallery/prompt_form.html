@@ -2,13 +2,9 @@
 {% extends 'gallery/base.html' %}
 {% load static %}
 
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'prompt_form.css' %}">
-{% endblock %}
-
 {% block content %}
 <h2 class="section-header centered noselect">Create Prompt</h2>
-<form method="Post">
+<form id="prompt-form" method="Post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">

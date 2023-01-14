@@ -2,16 +2,12 @@
 {% extends 'gallery/base.html' %}
 {% load static %}
 
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'index.css' %}"/>
-{% endblock %}
-
 {% block content %}
     <h2 class="section-header centered noselect">We have images</h2>
     <div class="image-grid">
         {% for image in images %}
-            <div class="card">
-                <img class="image" src="{{ image.image.url }}" alt="{{ image.name}}"/>
+            <div class="image-card">
+                <img class="image noselect" src="{{ image.image.url }}" alt="{{ image.name}}"/>
                 <div class="card-text">
                     <p class="image-name">{{ image.name }}</p>
                     <p class="image-description">
@@ -22,7 +18,7 @@
             </div>
         {% endfor %}
 
-        <div class="card" id="last-card">
+        <div class="image-card" id="last-card">
             <h1 class="noselect">Want more?</h1>
             <div class="card-text">
                 <button class="single-button noselect"

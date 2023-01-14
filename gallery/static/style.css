@@ -1,0 +1,258 @@
+/* Variables and constants */
+:root {
+    color-scheme: dark;
+    --background: #121212;
+    --secondary-background: #1f1f1f;
+    --item-background: #1e1e1e;
+    --primary: #e1e1e1;
+    --on-primary: #121212;
+    --secondary: #919191;
+    --accent: #2CB0E0;
+
+}
+
+/* Global styling */
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: var(--background);
+    color: var(--primary);
+
+    font-family: 'Sofia Sans', sans-serif;
+}
+
+button, .button {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+
+    background-color: var(--primary);
+    color: var(--on-primary);
+
+    border: none;
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+button:hover, .button:hover,
+button:focus, .button:focus {
+    filter: brightness(115%);
+    box-shadow: rgba(255, 255, 255, 0.1) 0 4px 12px;
+}
+
+button:active, .button:active {
+  filter: brightness(90%);
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(1px);
+}
+
+/* Base template components */
+
+header {
+    background-color: var(--secondary-background);
+    display: flex;
+    justify-content: space-between;
+
+    width: auto;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    min-height: 3rem;
+
+    margin: 0;
+    padding: 20px;
+}
+
+header > * {
+    margin: auto 0;
+}
+
+header > h1 {
+    text-transform: uppercase;
+}
+
+header > h1:hover {
+    filter: brightness(110%);
+    cursor: default;
+}
+
+header > h1 > a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.content-container {
+    margin: 20px;
+}
+
+/* Generally useful classes */
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.section-header {
+    text-transform: uppercase;
+    margin: 50px auto 20px auto;
+}
+
+.centered {
+    text-align: center;
+}
+
+/* index.html */
+
+.image-grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.image-card {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.image {
+    display: block;
+    width: 100%;
+}
+
+.card-text {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    transition: opacity 0.5s;
+}
+
+.card-text:hover {
+    opacity: 1;
+}
+
+.card-text > * {
+    transform: translateY(20px);
+    transition: transform 0.5s;
+}
+
+.card-text:hover > * {
+    transform: translateY(0);
+}
+
+.image-name {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.image-description {
+    font-size: 1.2em;
+}
+
+.image-date {
+    color: var(--secondary);
+}
+
+#last-card {
+    background-color: var(--item-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-button {
+    font-size: 2.5em;
+}
+
+/* prompt_form.html */
+
+#prompt-form {
+    margin: auto;
+    width: fit-content;
+    min-width: 50vw;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#prompt-form > br {
+    display: none;
+}
+
+#prompt-form > span {
+    margin-bottom: 1rem;
+    color: var(--secondary);
+}
+
+/* prompt_detail.css */
+
+.prompt-card {
+    background: var(--item-background);
+
+    max-width: 40vw;
+    margin: auto;
+    padding: 20px;
+
+    border-radius: 12px;
+}
+.prompt-name {
+    margin: 0;
+
+    font-size: 2em;
+    font-weight: bold;
+
+    text-align: center;
+}
+.prompt-description {
+    font-size: 1.5em;
+
+    text-align: center;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.prompt-detail {
+    margin: auto 0;
+    color: var(--secondary);
+}
+
+#prompt-task-form {
+    margin-top: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+#prompt-task-form label {
+    font-size: 1.5em;
+}
+
+#prompt-task-form input:not([type="submit"]) {
+    font-size: 1em;
+}
