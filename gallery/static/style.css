@@ -20,6 +20,11 @@ body {
     color: var(--primary);
 
     font-family: 'Sofia Sans', sans-serif;
+
+    /* Make footer stick to bottom */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -91,6 +96,10 @@ header {
 
     margin: 0;
     padding: 20px;
+
+    position: fixed;
+    z-index: 1;
+    top: 0;
 }
 
 header > * {
@@ -112,7 +121,28 @@ header > h1 > a {
 }
 
 .content-container {
-    margin: 20px;
+    margin: 5rem 20px 20px;
+
+    /* Push footer away */
+    flex: 1 0 auto;
+}
+
+footer {
+    background-color: var(--secondary-background);
+    color: var(--secondary);
+
+    display: flex;
+    justify-content: space-between;
+
+    width: auto;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+
+    margin: 0;
+    padding: 20px;
+
+    flex-shrink: 0;
 }
 
 /* Generally useful classes */
@@ -181,6 +211,10 @@ header > h1 > a {
 
 .card-text:hover > * {
     transform: translateY(0);
+}
+
+.square {
+    aspect-ratio: 1;
 }
 
 /* index.html */
