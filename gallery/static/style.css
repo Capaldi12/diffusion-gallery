@@ -121,7 +121,8 @@ header > h1 > a {
 }
 
 .content-container {
-    margin: 5rem 20px 20px;
+    margin: calc(5.5rem + 20px) 20px 20px;
+    overflow: hidden;
 
     /* Push footer away */
     flex: 1 0 auto;
@@ -332,4 +333,30 @@ footer {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+/* imaged_detail.html */
+
+.big-image {
+    min-width: 300px;
+}
+
+.two-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    max-width: 100%;
+}
+
+.detail-card {
+    background-color: var(--item-background);
+    padding: 20px;
+    width: fit-content;
+    max-width: 80vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }

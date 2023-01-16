@@ -192,6 +192,9 @@ class Image(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('image', args=[self.id])
+
 
 class Task(models.Model):
     """Task for image generation."""

@@ -53,3 +53,9 @@ def create_task(request):
 
     messages.info(request, 'Success!')
     return redirect(request.META['HTTP_REFERER'])
+
+
+@route('image/<pk>', name='image')
+class ImageDetailView(DetailView):
+    model = Image
+    context_object_name = 'image'

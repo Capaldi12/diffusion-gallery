@@ -8,7 +8,7 @@
             <div class="card">
                 <img class="image noselect" src="{{ image.image.url }}" alt="{{ image.name}}"/>
                 <div class="card-text">
-                    <p class="image-name">{{ image.name }}</p>
+                    <p class="image-name"><a href="{{ image.get_absolute_url }}">{{ image.name }}</a></p>
                     <p class="image-description">
                         {{ image.description|default:"No description" }}
                     </p>

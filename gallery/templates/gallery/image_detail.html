@@ -1,0 +1,23 @@
+{# Image page #}
+{% extends 'gallery/base.html' %}
+
+{% block content %}
+    <h2 class="section-header centered noselect">Image</h2>
+    <div class="two-cards">
+        <div class="card big-image">
+            <img src="{{ image.image.url }}" alt="{{ image.name }}" class="image">
+        </div>
+        <div class="card detail-card">
+            <p class="image-name">{{ image.name }}</p>
+            <p class="image-description">
+                {{ image.description|default:"No description" }}
+            </p>
+            <p class="image-date">
+                Generated at {{ image.created_at|date:"d-m-Y H:i" }} for
+                <a href="{{ image.prompt.get_absolute_url }}">
+                    {{ image.prompt.name }}
+                </a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
