@@ -21,3 +21,8 @@ __pycache__
 # web server media files
 /media
 /gallery_models
+
+# testing
+
+.coverage
+/htmlcov
