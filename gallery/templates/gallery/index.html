@@ -2,29 +2,42 @@
 {% extends 'gallery/base.html' %}
 
 {% block content %}
-    <h2 class="section-header centered noselect">We have images</h2>
-    <div class="image-grid">
-        {% for image in images %}
-            <div class="card">
-                <img class="image noselect" src="{{ image.image.url }}" alt="{{ image.name}}"/>
+    {% if images %}
+        <h2 class="section-header centered noselect">We have images</h2>
+        <div class="image-grid">
+            {% for image in images %}
+                <div class="card">
+                    <img class="image noselect" src="{{ image.image.url }}" alt="{{ image.name}}"/>
+                    <div class="card-text">
+                        <p class="image-name"><a href="{{ image.get_absolute_url }}">{{ image.name }}</a></p>
+                        <p class="image-description">
+                            {{ image.description|default:"No description" }}
+                        </p>
+                        <p class="image-date">{{ image.created_at|date:"d-m-Y H:i" }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="card square button-card">
+                <h1 class="noselect">Want more?</h1>
                 <div class="card-text">
-                    <p class="image-name"><a href="{{ image.get_absolute_url }}">{{ image.name }}</a></p>
-                    <p class="image-description">
-                        {{ image.description|default:"No description" }}
-                    </p>
-                    <p class="image-date">{{ image.created_at|date:"d-m-Y H:i" }}</p>
+                    <button class="single-button noselect"
+                            onclick="location.href='{% url 'generate' %}'">
+                        Generate
+                    </button>
                 </div>
             </div>
-        {% endfor %}
-
-        <div class="card square button-card">
-            <h1 class="noselect">Want more?</h1>
-            <div class="card-text">
-                <button class="single-button noselect"
-                        onclick="location.href='{% url 'generate' %}'">
+        </div>
+    {% else %}
+        <h2 class="section-header centered noselect">There are no images yet</h2>
+        <div class="empty-card">
+            <p class="text-with-button centered">
+                How about you
+                <button class="noselect" onclick="location.href='{% url 'generate' %}'">
                     Generate
                 </button>
-            </div>
+                some?
+            </p>
         </div>
-    </div>
+    {% endif %}
 {% endblock %}

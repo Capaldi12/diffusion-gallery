@@ -218,6 +218,19 @@ footer {
     aspect-ratio: 1;
 }
 
+.empty-card {
+    display: flex;
+    min-height: 25em;
+    max-height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-with-button {
+    color: var(--accent);
+    font-size: 2em;
+}
+
 /* index.html */
 
 .image-grid {
