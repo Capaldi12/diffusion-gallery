@@ -1,6 +1,6 @@
 """Utility class to simplify url designation."""
 
-from django.urls import path
+from django.urls import path, include
 
 
 class Router:
@@ -24,6 +24,11 @@ class Router:
             return view
 
         return bind
+
+    def include(self, route, patterns):
+        self.links.append(
+            path(route, include(patterns))
+        )
 
     def collect(self):
         return self.links
