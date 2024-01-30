@@ -179,3 +179,5 @@ LOGGING = {
 GALLERY_MODEL_ROOT = str(BASE_DIR / 'gallery_models')
 
 MODELS_CONFIG_PATH = BASE_DIR / 'optimizedSD' / 'v1-inference.yaml'
+
+ALLOWED_HOSTS = ['*']  # Allow any host
